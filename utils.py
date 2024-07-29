@@ -112,6 +112,29 @@ def plot_histogram(df, column_name, x_axis_name):
     return fig
 
 
+def plot_top10_est(df, column_name, color_hex=AZUL_NBA):
+    df = df[[column_name, 'player_name']].groupby(['player_name']).sum()
+    df = df[column_name].nlargest(10).sort_values(ascending=True)
+
+    fig = go.Figure()
+
+    fig.add_trace(
+        go.Bar(
+            y=df.index,
+            x=df.values,
+            orientation='h',
+            marker=dict(color=color_hex)
+        )
+    )
+
+    fig.update_layout(
+        xaxis_title='Quantidade',
+        yaxis_title='Jogador'
+    )
+
+    return fig
+
+
 def create_card(content, text_color):
     return f"""
     <div style="

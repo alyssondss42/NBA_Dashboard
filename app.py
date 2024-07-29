@@ -1,15 +1,10 @@
-from utils import plot_mean_age, create_card, calculate_mean_est, plot_corr, calculate_sum_est, plot_histogram
-from globals import VERMELHO_NBA, AZUL_NBA, LARANJA_NBA
-import plotly.offline as po
 import streamlit as st
-import pandas as pd
-import numpy as np
 import os
 
-# Configurar a página e o tema
-st.set_page_config(page_title="NBA dashboard")
 
 if __name__ == '__main__':
+    st.set_page_config(page_title="NBA dashboard", page_icon=':basketball:')
+
     st.title(":basketball: Dashboard NBA :basketball:")
     st.image(os.path.join("static", "nba_logo.png"), use_column_width=True)
 
