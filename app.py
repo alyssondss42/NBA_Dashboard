@@ -16,13 +16,24 @@ if __name__ == '__main__':
             "Com 30 franquias (29 nos Estados Unidos e 1 no Canadá), a NBA também é considerada a principal liga de "
             "basquete do mundo.")
 
+    st.markdown("No vídeo abaixo você pode conferir o TOP 100 jogadas da última década.")
+
+    st.markdown('''
+                <iframe width="560" height="315" 
+                src="https://www.youtube.com/embed/t22flliJLTQ?si=b1ey0S_0cHwQ8AAj" 
+                title="YouTube video player" 
+                frameborder="0" allow="accelerometer; autoplay; clipboard-write; 
+                encrypted-media; gyroscope; picture-in-picture; web-share" 
+                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+                ''', unsafe_allow_html=True)
+
     st.markdown("O trabalho foi desenvolvido sobre a base "
                 "[NBA players](https://www.kaggle.com/datasets/justinas/nba-players-data/data) que contém dados "
                 "dos jogadores que participaram da liga nas temporadas regulares de 1996 a 2022.")
 
     df_download = pd.read_csv("https://raw.githubusercontent.com/alyssondss42/NBA_Dashboard/master/data/nba_data_v2.csv")
 
-    st.markdown("Baixe os dados já tratados que utilizamos nesse dashboard.")
+    st.markdown(":point_down: Baixe os dados já tratados que utilizamos nesse dashboard.")
     st.download_button(
         label="Download",
         data=df_download.to_csv().encode("utf-8"),
