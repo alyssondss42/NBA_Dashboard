@@ -39,12 +39,12 @@ def plot_mean_age(df):
 
 def calculate_mean_est(df, est_name):
     mean_value = df[est_name].mean()
-    return round(mean_value, 3)
+    return round(mean_value, 2)
 
 
 def calculate_sum_est(df, est_name):
     sum_value = df[est_name].sum()
-    return round(sum_value, 3)
+    return round(sum_value, 2)
 
 
 def plot_corr(df):
@@ -82,7 +82,7 @@ def plot_corr(df):
     return fig
 
 
-def plot_histogram(df, column_name, x_axis_name):
+def plot_histogram(df, column_name, x_axis_name, write_y_axis=False):
     # valores uteis
     player_mean = np.mean(df[column_name])
     min_ = min(df[column_name])
@@ -104,10 +104,15 @@ def plot_histogram(df, column_name, x_axis_name):
                   line_color=VERMELHO_NBA,
                   annotation_text=f'Média: {player_mean:.2f}')
 
-    fig.update_layout(xaxis_title=x_axis_name,
-                      yaxis_title='Frequência',
-                      bargap=0.1,
-                      bargroupgap=0.1)
+    if write_y_axis:
+        fig.update_layout(xaxis_title=x_axis_name,
+                          yaxis_title='Frequência',
+                          bargap=0.1,
+                          bargroupgap=0.1)
+    else:
+        fig.update_layout(xaxis_title=x_axis_name,
+                          bargap=0.1,
+                          bargroupgap=0.1)
 
     return fig
 
@@ -143,9 +148,9 @@ def create_card(content, text_color):
         padding: 8px; 
         margin: 8px; 
         box-shadow: 0 4px 8px rgba(0,0,0,0.1);
-        background-color: #000000;
+        background-color: #ffffff;
         color: {text_color};
     ">
-        <p style="text-align: center; color: {text_color}; font-size: 24px;">{content}</p>
+        <p style="text-align: center; color: {text_color}; font-size: 24px;"> <b> {content} </b> </p>
     </div>
     """

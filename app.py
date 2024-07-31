@@ -1,6 +1,8 @@
 import streamlit as st
 import os
 
+import pandas as pd
+
 
 if __name__ == '__main__':
     st.set_page_config(page_title="NBA dashboard", page_icon=':basketball:')
@@ -18,6 +20,15 @@ if __name__ == '__main__':
                 "[NBA players](https://www.kaggle.com/datasets/justinas/nba-players-data/data) que contém dados "
                 "dos jogadores que participaram da liga nas temporadas regulares de 1996 a 2022.")
 
+    df_download = pd.read_csv("https://raw.githubusercontent.com/alyssondss42/NBA_Dashboard/master/data/nba_data_v2.csv")
+
+    st.markdown("Baixe os dados já tratados que utilizamos nesse dashboard.")
+    st.download_button(
+        label="Download",
+        data=df_download.to_csv().encode("utf-8"),
+        file_name="nba_dataset.csv",
+        mime="text/csv",
+    )
 
     st.divider()
     st.markdown("O dashboard foi dividido em duas páginas: ")
