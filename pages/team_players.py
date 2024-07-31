@@ -17,11 +17,15 @@ if __name__ == '__main__':
     df = pd.read_csv(os.path.join("data", "nba_data_v2.csv"))
     disable_player_filter = True
 
+    # Variaveis para dinamizar os anos extremos da base
+    min_year = df['season'].min()
+    max_year = df['season'].max()
+
     st.markdown("<h3 style='text-align: center;'>Selecione o intervalo das temporadas</h3>", unsafe_allow_html=True)
     start_year, end_year = st.select_slider(
         "",
         options=df['season'].unique().tolist(),
-        value=(1996, 2022)
+        value=(min_year, max_year)
     )
 
     df_filtered = df[(df['season'] >= start_year) & (df['season'] <= end_year)]
